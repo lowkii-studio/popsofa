@@ -38,7 +38,7 @@ struct InlineTrailerView: NSViewRepresentable {
         // Player direkt als Seite laden; der Referer verhindert YouTubes Fehler 153.
         let url = URL(string: "https://www.youtube-nocookie.com/embed/\(videoID)?autoplay=1&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3")!
         var req = URLRequest(url: url)
-        req.setValue("https://couchkino.app/", forHTTPHeaderField: "Referer")
+        req.setValue("https://github.com/lowkii-studio/popsofa", forHTTPHeaderField: "Referer")
         web.load(req)
         onReady(context.coordinator)
         return web
