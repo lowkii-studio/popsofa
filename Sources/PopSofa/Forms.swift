@@ -242,6 +242,10 @@ struct FormPage<Extra: View>: View {
                     }
                     .padding(.vertical, 10)
                     if let n = spec.note { Text(n).font(.read(15)).opacity(0.8) }
+                    if state.sheet == .key, let logo = Attribution.logo {
+                        Image(nsImage: logo).resizable().scaledToFit().frame(width: 90 * Metrics.s)
+                            .padding(.top, 6).accessibilityLabel("TMDB")
+                    }
                 }
                 .padding(.horizontal, 8)
                 .frame(maxWidth: .infinity, alignment: .leading)

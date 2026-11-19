@@ -21,6 +21,8 @@ mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 cp "$BIN" "$APP/Contents/MacOS/PopSofa"
 # Schrift für den Stil „Klar“ (Atkinson Hyperlegible Next, SIL OFL 1.1 – Lizenz liegt daneben)
 cp -R Resources/Fonts "$APP/Contents/Resources/"
+# TMDB-Logo (Pflicht laut TMDB-API-Bedingungen, Abschnitt 3)
+cp Resources/tmdb-logo.png "$APP/Contents/Resources/"
 
 # App-Icon: groß (Dock, Finder) = Sessel aus Resources/AppIcon.png,
 # klein (16/32 px: Listen, Menüs, Tabs) = nur Sprechblase aus Resources/AppIconSmall.png.

@@ -513,6 +513,7 @@ views.edit = d => {
     <p class="dim intro">${esc(t('1. Kostenloses Konto auf themoviedb.org anlegen\n2. Einstellungen › API › Schlüssel anfordern (privat)\n3. „API Read Access Token“ oder „API Key“ kopieren und hier einfügen (⌘V oder iPhone)').replace(/ \(⌘V.*\)$/, ''))}
       ${esc(t('Für alle Profile in diesem Browser.'))}</p>
     <p class="dim intro">This application uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.</p>
+    <img src="tmdb-logo.svg" alt="TMDB" width="90" style="margin:4px 0 12px">
     <input id="key" data-f data-k="key" value="${esc(S.key)}" placeholder="${esc(t('Schlüssel einfügen'))}" autocomplete="off" spellcheck="false">
     <div class="row-btns">
       <button class="btn primary" data-f data-k="save" data-a="save">${esc(t('Speichern'))}</button>

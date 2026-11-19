@@ -5,6 +5,8 @@ import AppKit
 enum Attribution {
     static let tmdb = "This application uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB."
     static let providers = "Streaming availability data provided by JustWatch via TMDB."
+    /// TMDB-Logo aus dem App-Bundle (nil beim Start ohne Bundle, z. B. `swift run`).
+    static let logo: NSImage? = Bundle.main.url(forResource: "tmdb-logo", withExtension: "png").flatMap(NSImage.init(contentsOf:))
 }
 
 @main
@@ -52,8 +54,15 @@ struct PopSofaApp: App {
             CommandGroup(replacing: .appInfo) {
                 Button(tr("Über PopSofa")) {
                     let text = tr("Ein Experiment von lowkii studio. Open Source unter MIT-Lizenz.") + "\n\n" + Attribution.tmdb + "\n" + Attribution.providers
-                    NSApp.orderFrontStandardAboutPanel(options: [
-                        .credits: NSAttributedString(string: text, attributes: [.font: NSFont.systemFont(ofSize: 11)])])
+                    let credits = NSMutableAttributedString(string: text, attributes: [.font: NSFont.systemFont(ofSize: 11)])
+                    if let logo = Attribution.logo {
+                        let a = NSTextAttachment()
+                        a.image = logo
+                        a.bounds = CGRect(x: 0, y: 0, width: 80, height: 80 * logo.size.height / max(logo.size.width, 1))
+                        credits.append(NSAttributedString(string: "\n\n"))
+                        credits.append(NSAttributedString(attachment: a))
+                    }
+                    NSApp.orderFrontStandardAboutPanel(options: [.credits: credits])
                     NSApp.activate(ignoringOtherApps: true)
                 }
             }
