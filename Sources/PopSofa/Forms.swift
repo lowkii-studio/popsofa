@@ -46,7 +46,7 @@ extension AppState {
                 fields: [FormFieldSpec(key: "key", label: tr("Schlüssel"), placeholder: tr("Schlüssel einfügen"), mono: true)],
                 buttons: [FormButton(title: tr("Speichern"), primary: true) { self.saveKey(self.form["key"] ?? "") },
                           FormButton(title: tr("Abbrechen")) { self.closeSheet() }],
-                note: tr("Wird im Schlüsselbund deines Macs gespeichert. Dein Geschmack bleibt lokal."))
+                note: tr("Wird im Schlüsselbund deines Macs gespeichert. Dein Geschmack bleibt lokal.") + "\n\n" + Attribution.tmdb)
         case .profile?:
             return profileFormSpec
         case .remote?:

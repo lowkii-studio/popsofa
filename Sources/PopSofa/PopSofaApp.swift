@@ -1,6 +1,12 @@
 import SwiftUI
 import AppKit
 
+/// Pflichttext der TMDB-API-Bedingungen (https://www.themoviedb.org/api-terms-of-use, Abschnitt 3) – bewusst nicht übersetzt.
+enum Attribution {
+    static let tmdb = "This application uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB."
+    static let providers = "Streaming availability data provided by JustWatch via TMDB."
+}
+
 @main
 struct PopSofaApp: App {
     @StateObject private var state = AppState()
@@ -43,6 +49,14 @@ struct PopSofaApp: App {
         }
         .windowStyle(.hiddenTitleBar)
         .commands {
+            CommandGroup(replacing: .appInfo) {
+                Button(tr("Über PopSofa")) {
+                    let text = tr("Ein Experiment von lowkii studio. Open Source unter MIT-Lizenz.") + "\n\n" + Attribution.tmdb + "\n" + Attribution.providers
+                    NSApp.orderFrontStandardAboutPanel(options: [
+                        .credits: NSAttributedString(string: text, attributes: [.font: NSFont.systemFont(ofSize: 11)])])
+                    NSApp.activate(ignoringOtherApps: true)
+                }
+            }
             CommandGroup(after: .appSettings) {
                 Button(tr("iPhone koppeln …")) { state.sheet = .remote }
             }
