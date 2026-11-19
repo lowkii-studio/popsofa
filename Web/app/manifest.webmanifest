@@ -1,0 +1,9 @@
+{
+  "name": "PopSofa",
+  "short_name": "PopSofa",
+  "start_url": "./",
+  "display": "fullscreen",
+  "background_color": "#0E5E66",
+  "theme_color": "#0E5E66",
+  "icons": [{ "src": "icon.png", "sizes": "512x512", "type": "image/png" }]
+}

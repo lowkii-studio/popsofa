@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "PopSofa Controller",
+  "version": "1.0",
+  "description": "Xbox-Controller in Netflix & Co.: Maus-Zeiger mit dem Stick, Pause, Lautstärke, zurück zu PopSofa, Profil automatisch wählen.",
+  "icons": { "128": "icon.png" },
+  "permissions": ["tabs"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [{
+    "matches": [
+      "*://*.netflix.com/*", "*://*.primevideo.com/*", "*://*.amazon.de/*", "*://*.amazon.com/*",
+      "*://*.disneyplus.com/*", "*://tv.apple.com/*", "*://*.wowtv.de/*", "*://plus.rtl.de/*", "*://*.joyn.de/*",
+      "*://*.ardmediathek.de/*", "*://*.zdf.de/*", "*://*.paramountplus.com/*", "*://*.hbomax.com/*", "*://*.max.com/*",
+      "*://*.dazn.com/*", "*://*.crunchyroll.com/*", "*://*.youtube.com/*", "*://*.twitch.tv/*", "*://open.spotify.com/*"
+    ],
+    "js": ["stream.js"],
+    "run_at": "document_idle"
+  }]
+}
