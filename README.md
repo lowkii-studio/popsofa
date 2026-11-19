@@ -2,6 +2,22 @@
 
 Ein Apple-TV-artiger Streaming-Launcher für den Mac, komplett per Xbox-Controller bedienbar.
 
+## Was PopSofa besonders macht
+
+PopSofa ist ein Experiment von lowkii studio: ein Launcher, der sich an die Person anpasst, die davor sitzt – nicht umgekehrt. Er ist keine Diagnose und kein Medizinprodukt, die Tests helfen nur bei der Einstellung der Darstellung.
+
+- **Anpassung an Sehvermögen und Sitzabstand:** Eine Kamera misst einmalig etwa 3 Sekunden lang den Abstand zum Gesicht (es werden keine Bilder gespeichert). Aus Abstand, Bildschirmgröße und einem kurzen Sehtest im Profil berechnet der Modus „Auto“ die Textgröße stufenlos. Die Messung arbeitet mit festen Näherungswerten und ist ungefähr, nicht kalibriert. Alternativ gibt es feste Stufen von Klein bis Sehr groß.
+- **Kurze Tests für die Darstellung:**
+  - *Prismen-Check:* Prismengläser zerlegen helle Kanten auf dunklem Grund in farbige Säume. Wer das sieht, bekommt den hellen Stil „Pop hell (Prismen)“: dunkle Schrift auf hellem Grund, kräftigere Schriftschnitte und kein Schlagschatten, der wie ein Doppelbild wirken kann.
+  - *Farbsehtest:* nach dem Prinzip des Cambridge Colour Test (Ring mit Lücke in einem Punktfeld, Treppenverfahren je Achse für Rot, Grün und Blau-Gelb). Das Ergebnis steuert die Farbanpassung. Die Grenzwerte sind großzügig, weil Fernseher und Raumlicht nicht kalibriert sind.
+  - *Farbanpassung und Simulation:* Farben werden so verschoben, dass sich Rot und Grün bzw. Blau und Gelb besser unterscheiden lassen (Matrizen nach Machado u. a., 2009). Eine Simulation zeigt, wie Betroffene die Farben sehen. Wo Farben nicht reichen, zeigt PopSofa Zustände zusätzlich mit Symbolen und Text.
+  - *Lesbarkeit:* Die Schrift „Klar“ ist Atkinson Hyperlegible Next, entwickelt für Menschen mit Sehschwäche. Nebentext bleibt in den Stilen „Klar“ bei mindestens 85 % Deckkraft, und die Auswahl vergrößert nichts, weil skalierte Schrift beim Animieren flimmert.
+- **Gemeinsame Watchlist („Unsere Watchlist“):** Die Merklisten aller Profile werden zusammengeführt. Jeder Titel erscheint einmal, mit farbigen Initialen derer, die ihn gemerkt haben. Gemeinsam Gemerktes steht zuerst, ein Schalter zeigt nur noch die gemeinsamen Titel.
+- **Steuerung ohne Maus und Tastatur:** per Xbox-Controller (inklusive Maus-Modus und Bildschirmtastatur mit Spracheingabe) oder per iPhone im selben WLAN, ganz ohne App-Installation: QR-Code scannen, PIN eingeben, fertig.
+- **Weiteres:** Oberfläche auf Deutsch, Portugiesisch und Englisch, Suche mit lokalem Apple-Intelligence-Modell, Kacheln ohne Original-Logos, Open Source unter MIT.
+
+**Grenzen:** PopSofa läuft nur auf dem Mac, der Build braucht Xcode, und für Empfehlungen braucht jede Person einen eigenen TMDB-Schlüssel (siehe unten). Ein fertiges, signiertes Release gibt es noch nicht.
+
 ## Installieren
 
 1. Xcode installieren und einmal `sudo xcodebuild -license accept` ausführen (die Command Line Tools allein reichen nicht – ihnen fehlt das SwiftUI-Makro-Plugin).
