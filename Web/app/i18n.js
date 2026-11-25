@@ -400,6 +400,14 @@ const L10N = {
 "Chave TMDB",
 "TMDB key"
 ],
+"Über PopSofa": [
+"Sobre o PopSofa",
+"About PopSofa"
+],
+"Ein Projekt von lowkii studios. Frei für nicht-kommerzielle Nutzung.": [
+"Um projeto da lowkii studios. Livre para uso não comercial.",
+"A project by lowkii studios. Free for noncommercial use."
+],
 "1. Kostenloses Konto auf themoviedb.org anlegen\n2. Einstellungen › API › Schlüssel anfordern (privat)\n3. „API Read Access Token“ oder „API Key“ kopieren und hier einfügen (⌘V oder iPhone)": [
 "1. Cria uma conta gratuita em themoviedb.org\n2. Definições › API › pede uma chave (uso pessoal)\n3. Copia o «API Read Access Token» ou a «API Key» e cola aqui (⌘V ou iPhone)",
 "1. Create a free account on themoviedb.org\n2. Settings › API › request a key (personal)\n3. Copy the “API Read Access Token” or “API Key” and paste it here (⌘V or iPhone)"

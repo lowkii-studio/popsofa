@@ -53,7 +53,7 @@ struct PopSofaApp: App {
         .commands {
             CommandGroup(replacing: .appInfo) {
                 Button(tr("Über PopSofa")) {
-                    let text = tr("Ein Experiment von lowkii studio. Open Source unter MIT-Lizenz.") + "\n\n" + Attribution.tmdb + "\n" + Attribution.providers
+                    let text = tr("Ein Projekt von lowkii studios. Frei für nicht-kommerzielle Nutzung.") + "\n\n" + Attribution.tmdb + "\n" + Attribution.providers
                     let credits = NSMutableAttributedString(string: text, attributes: [.font: NSFont.systemFont(ofSize: 11)])
                     if let logo = Attribution.logo {
                         let a = NSTextAttachment()

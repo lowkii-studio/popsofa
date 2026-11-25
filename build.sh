@@ -12,8 +12,11 @@ if [ -d /Applications/Xcode.app ] && [ -z "${DEVELOPER_DIR:-}" ]; then
 fi
 
 echo "▸ Baue PopSofa (Release) …"
-swift build -c release
-BIN="$(swift build -c release --show-bin-path)/PopSofa"
+# RELEASE=1: Universal-App (Apple Silicon + Intel) und DMG in dist/, ohne die installierte App anzufassen.
+ARCHS=""
+[ -n "${RELEASE:-}" ] && ARCHS="--arch arm64 --arch x86_64"
+swift build -c release $ARCHS
+BIN="$(swift build -c release $ARCHS --show-bin-path)/PopSofa"
 
 echo "▸ Erzeuge App-Bundle …"
 rm -rf "$APP"
@@ -87,6 +90,17 @@ else
 fi
 
 echo "✓ Fertig: $(pwd)/$APP"
+
+if [ -n "${RELEASE:-}" ]; then
+    codesign --verify --deep --strict "$APP"
+    VERSION="$(/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' "$APP/Contents/Info.plist")"
+    STAGE="$(mktemp -d)"
+    cp -R "$APP" "$STAGE/"; cp LICENSE "$STAGE/LICENSE.txt"; cp LICENSE-MEDIA.md "$STAGE/LICENSE-MEDIA.txt"; ln -s /Applications "$STAGE/Programme"
+    mkdir -p dist
+    hdiutil create -volname PopSofa -srcfolder "$STAGE" -ov -format UDZO "dist/PopSofa-$VERSION.dmg" >/dev/null
+    (cd dist && shasum -a 256 "PopSofa-$VERSION.dmg" | tee "PopSofa-$VERSION.dmg.sha256")
+    exit 0
+fi
 
 # Liegt die App schon in „Programme“ (auch noch unter altem Namen), dort gleich mit aktualisieren.
 # Bundle-ID und Zertifikat bleiben gleich → Freigaben und Einstellungen bleiben erhalten.

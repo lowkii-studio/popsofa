@@ -1,10 +1,27 @@
 # PopSofa
 
-Ein Apple-TV-artiger Streaming-Launcher für den Mac, komplett per Xbox-Controller bedienbar.
+![PopSofa. Mac an. Füße hoch.](docs/media/social-preview.png)
+
+**Mac an. Füße hoch.** PopSofa ist der Streaming-Startbildschirm für den Mac am Fernseher. Du wählst deine Dienste mit dem Xbox-Controller oder dem iPhone aus, die Tastatur kann im Schrank bleiben.
+
+**[PopSofa für den Mac laden](https://github.com/lowkii-studio/popsofa/releases/latest)** · macOS 13 oder neuer · Apple Silicon und Intel · kostenlos für nicht-kommerzielle Nutzung
+
+![Startbildschirm mit Dienst-Kacheln](docs/media/home.png)
+
+*English: PopSofa is a free streaming launcher (source available, noncommercial use) for a Mac connected to your TV. Navigate with an Xbox controller or use your iPhone as a remote, no app install needed. The interface is available in German, English and Portuguese.*
+
+## Für wen
+
+Für alle, die einen Mac mini oder ein MacBook am Fernseher haben und abends nicht mit Maus und Tastatur auf dem Sofa sitzen wollen.
+
+- **Deine Dienste auf einem Bildschirm:** Netflix, Prime Video, Disney+, ARD, ZDF, YouTube und eigene Seiten. Abos und Logins bleiben bei den Diensten.
+- **Controller oder iPhone:** auswählen, scrollen, tippen, diktieren.
+- **Mehrere Profile:** eigene Dienste und Merklisten, dazu eine gemeinsame Watchlist.
+- **Lesbar vom Sofa:** Schriftgröße, Kontrast und Farben pro Profil.
 
 ## Was PopSofa besonders macht
 
-PopSofa ist ein Experiment von lowkii studio: ein Launcher, der sich an die Person anpasst, die davor sitzt – nicht umgekehrt. Er ist keine Diagnose und kein Medizinprodukt, die Tests helfen nur bei der Einstellung der Darstellung.
+PopSofa ist ein Experiment von lowkii studios: ein Launcher, der sich an die Person anpasst, die davor sitzt – nicht umgekehrt. Er ist keine Diagnose und kein Medizinprodukt, die Tests helfen nur bei der Einstellung der Darstellung.
 
 - **Anpassung an Sehvermögen und Sitzabstand:** Eine Kamera misst einmalig etwa 3 Sekunden lang den Abstand zum Gesicht (es werden keine Bilder gespeichert). Aus Abstand, Bildschirmgröße und einem kurzen Sehtest im Profil berechnet der Modus „Auto“ die Textgröße stufenlos. Die Messung arbeitet mit festen Näherungswerten und ist ungefähr, nicht kalibriert. Alternativ gibt es feste Stufen von Klein bis Sehr groß.
 - **Kurze Tests für die Darstellung:**
@@ -14,16 +31,34 @@ PopSofa ist ein Experiment von lowkii studio: ein Launcher, der sich an die Pers
   - *Lesbarkeit:* Die Schrift „Klar“ ist Atkinson Hyperlegible Next, entwickelt für Menschen mit Sehschwäche. Nebentext bleibt in den Stilen „Klar“ bei mindestens 85 % Deckkraft, und die Auswahl vergrößert nichts, weil skalierte Schrift beim Animieren flimmert.
 - **Gemeinsame Watchlist („Unsere Watchlist“):** Die Merklisten aller Profile werden zusammengeführt. Jeder Titel erscheint einmal, mit farbigen Initialen derer, die ihn gemerkt haben. Gemeinsam Gemerktes steht zuerst, ein Schalter zeigt nur noch die gemeinsamen Titel.
 - **Steuerung ohne Maus und Tastatur:** per Xbox-Controller (inklusive Maus-Modus und Bildschirmtastatur mit Spracheingabe) oder per iPhone im selben WLAN, ganz ohne App-Installation: QR-Code scannen, PIN eingeben, fertig.
-- **Weiteres:** Oberfläche auf Deutsch, Portugiesisch und Englisch, Suche mit lokalem Apple-Intelligence-Modell, Kacheln ohne Original-Logos, Open Source unter MIT.
+- **Weiteres:** Oberfläche auf Deutsch, Portugiesisch und Englisch, Suche mit lokalem Apple-Intelligence-Modell, Kacheln ohne Original-Logos, offener Code, frei für nicht-kommerzielle Nutzung.
 
-**Grenzen:** PopSofa läuft nur auf dem Mac, der Build braucht Xcode, und für Empfehlungen braucht jede Person einen eigenen TMDB-Schlüssel (siehe unten). Ein fertiges, signiertes Release gibt es noch nicht.
+### Wie PopSofa entstanden ist
+
+Konzept und Ideen stammen größtenteils von lowkii studios, ebenso Use Cases, UX-Entwurf und die Qualitätssicherung an der App. Daraus kamen zum Beispiel:
+
+- **Xbox-Controller am Mac** und das Zusammenspiel verschiedener Eingabegeräte: Controller, iPhone, Maus, Tastatur und Sprache.
+- **Abstand und Schrift:** Die Kamera misst auf Wunsch einmalig den Sitzabstand, die Schriftgröße richtet sich danach.
+- **Zoom, der mitkommt:** Öffnet PopSofa einen Dienst mit Kopierschutz im Browser, stellt es dort automatisch die Zoomstufe ein, die zur Schriftgröße in PopSofa passt. Beim Zurückkehren wird der Zoom im vorderen Tab wieder auf 100 % gesetzt. Dafür ist die Freigabe „Bedienungshilfen“ nötig.
+- **Einstellung für Prismenbrillen:** ein kurzer Check und ein heller Stil, der farbige Säume an Kanten weniger auffallen lassen soll.
+- **Farbsehtest mit Punktfeldern**, der die Farben der Oberfläche einstellt. Die Methode folgt dem Cambridge Colour Test.
+
+PopSofa zeigt auch, was mit KI möglich ist. Sie war das Werkzeug bei der Umsetzung. Welches Problem gelöst wird, wie sich die Lösung anfühlt und ob sie gut genug ist, haben Menschen entschieden.
+
+**Grenzen:** Die App läuft auf dem Mac (eine Web-Version mit weniger Funktionen liegt in `Web/`), und für Empfehlungen braucht jede Person einen eigenen TMDB-Schlüssel (siehe unten). Das Release ist nicht von Apple notarisiert, deshalb braucht der erste Start einen Extra-Schritt.
 
 ## Installieren
 
-1. Xcode installieren und einmal `sudo xcodebuild -license accept` ausführen (die Command Line Tools allein reichen nicht – ihnen fehlt das SwiftUI-Makro-Plugin).
-2. Im Ordner dieses Projekts: `./build.sh` (ggf. vorher `chmod +x build.sh`).
-3. `PopSofa.app` in den Ordner „Programme“ ziehen und starten.
-4. Xbox-Controller per Bluetooth koppeln: Systemeinstellungen › Bluetooth (Controller-Sync-Taste halten, bis er blinkt).
+1. Die DMG-Datei vom [neuesten Release](https://github.com/lowkii-studio/popsofa/releases/latest) laden, öffnen und PopSofa auf „Programme“ ziehen.
+2. PopSofa starten. macOS blockiert den ersten Start, weil die App nicht notarisiert ist. Die Meldung schließen.
+3. Systemeinstellungen › Datenschutz & Sicherheit öffnen, nach unten scrollen und bei PopSofa **„Trotzdem öffnen“** wählen ([Anleitung von Apple](https://support.apple.com/de-de/102445)). Das ist nur beim ersten Start nötig.
+4. Xbox-Controller per Bluetooth koppeln: Systemeinstellungen › Bluetooth (Sync-Taste halten, bis er blinkt).
+
+Öffne nur Dateien aus diesem Repository. Die Prüfsumme (SHA-256) liegt beim Release, du kannst sie mit `shasum -a 256 <Datei>` vergleichen.
+
+### Selbst bauen
+
+Xcode installieren, einmal `sudo xcodebuild -license accept` ausführen, dann `./build.sh`. Für eine Universal-DMG: `RELEASE=1 ./build.sh`. Achtung: Ohne `RELEASE=1` ersetzt das Skript eine vorhandene PopSofa-App in „Programme“.
 
 ## Berechtigungen (beim ersten Gebrauch)
 
@@ -122,7 +157,9 @@ Sicherheit: Nur Geräte aus dem lokalen Netz werden angenommen, Befehle erst nac
 
 ## Rechtliches
 
-- **Lizenz:** MIT (siehe `LICENSE`). Die Schrift Atkinson Hyperlegible Next steht unter der SIL OFL 1.1, die Lizenz liegt in `Resources/Fonts`.
+- **Lizenz:** [PolyForm Noncommercial 1.0.0](LICENSE). Du darfst PopSofa für nicht-kommerzielle Zwecke kostenlos nutzen, ändern und weitergeben. Kommerzielle Nutzung nur nach Absprache. Der Code ist offen, gilt aber nach der Definition der Open Source Initiative nicht als „Open Source“. Frühere Stände bis Commit `c9634a0` wurden unter MIT veröffentlicht. Die Schrift Atkinson Hyperlegible Next steht unter der SIL OFL 1.1, die Lizenz liegt in `Resources/Fonts`.
 - **TMDB:** This application uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB. Die kostenlose TMDB-API darf nur nicht-kommerziell genutzt werden ([API-Bedingungen](https://www.themoviedb.org/api-terms-of-use)). Jede Person trägt ihren eigenen API-Schlüssel ein. PopSofa speichert keine TMDB-Inhalte dauerhaft.
 - **Marken:** Netflix, Prime Video, Disney+, YouTube und weitere genannte Dienste sind Marken ihrer jeweiligen Inhaber. PopSofa steht in keiner Verbindung zu ihnen und verwendet ihre Logos nicht.
-- **Keine Gewähr:** PopSofa ist ein Hobby- und Experimentierprojekt von lowkii studio und wird ohne Gewähr bereitgestellt.
+- **Keine Gewähr:** PopSofa ist ein Hobby- und Experimentierprojekt von lowkii studios und wird ohne Gewähr bereitgestellt.
+- **Medien, Name und Logos:** Texte, Screenshots und Videos stehen unter CC BY-NC 4.0. Name, Icon und Logo sind nicht lizenziert. Details in [LICENSE-MEDIA.md](LICENSE-MEDIA.md).
+- **Impressum:** siehe [IMPRESSUM.md](IMPRESSUM.md).
