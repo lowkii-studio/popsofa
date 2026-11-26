@@ -10,8 +10,8 @@
   --body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; --zoom: 1.05; --ring: #000;
   font-size: clamp(13px, 1.15vw, 30px);
 }
-/* Afro: Erdtöne, Kente-Gold */
-[data-theme="afro"] { --bg: #3B1F14; --dots: rgba(200, 85, 43, .35); --card: #F2E2C4; --accent: #F4B63F; }
+/* Webmuster: Erdtöne, Kente-Gold */
+[data-theme="woven"] { --bg: #3B1F14; --dots: rgba(200, 85, 43, .35); --card: #F2E2C4; --accent: #F4B63F; }
 /* Apple: ruhiges dunkles Glas, keine Konturen */
 [data-theme="apple"] { --bg: #0A0A0F; --dots: transparent; --card: rgba(255, 255, 255, .12); --cardfg: #fff;
   --accent: #fff; --accentfg: #000; --line: transparent; --sh4: none; --sh5: none; --tsh3: none; --tsh2: none;

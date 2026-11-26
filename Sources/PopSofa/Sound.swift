@@ -1,7 +1,7 @@
 import AVFoundation
 
 /// Leise Bedientöne, synthetisch erzeugt (keine Audiodateien), passend zum Stil:
-/// Apple = feines Ticken, Pop-Art = weiche „Plopp“-Blasen, Afro = Holzklang & Kalimba.
+/// Apple = feines Ticken, Pop-Art = weiche „Plopp“-Blasen, Webmuster = Holzklang & Kalimba.
 @MainActor
 final class UISound {
     static let shared = UISound()
@@ -90,7 +90,7 @@ final class UISound {
                                            tone(659, 880, dur: 0.07, decay: 0.03, amp: 0.12, delay: 0.1),
                                            tone(784, 1050, dur: 0.07, decay: 0.03, amp: 0.12, delay: 0.2),
                                            tone(1568, 2093, dur: 0.12, decay: 0.04, amp: 0.07, delay: 0.32))
-        case (.afro, .start):   return mix(tone(587, dur: 0.5, decay: 0.13, amp: 0.09, partials: kalimba),
+        case (.woven, .start):   return mix(tone(587, dur: 0.5, decay: 0.13, amp: 0.09, partials: kalimba),
                                            tone(659, dur: 0.5, decay: 0.13, amp: 0.09, partials: kalimba, delay: 0.12),
                                            tone(880, dur: 0.5, decay: 0.13, amp: 0.09, partials: kalimba, delay: 0.24),
                                            tone(1175, dur: 0.55, decay: 0.15, amp: 0.07, partials: kalimba, delay: 0.36))
@@ -109,11 +109,11 @@ final class UISound {
                                            tone(1040, 1560, dur: 0.07, decay: 0.03, amp: 0.10, delay: 0.06))
         case (.pop, .back):     return tone(760, 260, dur: 0.11, decay: 0.04, amp: 0.12)
 
-        // Afro: Holzblock beim Bewegen, Kalimba-Töne (Pentatonik) beim Auswählen
-        case (.afro, .move):    return tone(1150, dur: 0.05, decay: 0.012, amp: 0.12, partials: [(1, 1), (2.76, 0.35)])
-        case (.afro, .select):  return mix(tone(587, dur: 0.45, decay: 0.12, amp: 0.10, partials: kalimba),
+        // Webmuster: Holzblock beim Bewegen, Kalimba-Töne (Pentatonik) beim Auswählen
+        case (.woven, .move):    return tone(1150, dur: 0.05, decay: 0.012, amp: 0.12, partials: [(1, 1), (2.76, 0.35)])
+        case (.woven, .select):  return mix(tone(587, dur: 0.45, decay: 0.12, amp: 0.10, partials: kalimba),
                                            tone(880, dur: 0.45, decay: 0.12, amp: 0.08, partials: kalimba, delay: 0.08))
-        case (.afro, .back):    return tone(392, dur: 0.35, decay: 0.1, amp: 0.10, partials: kalimba)
+        case (.woven, .back):    return tone(392, dur: 0.35, decay: 0.1, amp: 0.10, partials: kalimba)
         case (.clear, _), (.clearLight, _), (.popLight, _): return []   // oben auf Apple umgelegt
         }
     }

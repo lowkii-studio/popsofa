@@ -81,7 +81,7 @@ enum Catalog {
                 colorTop: "#1DB954", colorBottom: "#0A3D1C", symbol: "music.note"),
     ]
 
-    /// Farbrichtung der Marke – der Stil (Pop-Art, Afro) setzt dafür seine eigene Farbe ein.
+    /// Farbrichtung der Marke – der Stil (Pop-Art, Webmuster) setzt dafür seine eigene Farbe ein.
     static let tones: [String: String] = [
         "netflix": "red", "youtube": "red", "prime": "cyan", "disney": "blue", "appletv": "ink",
         "wow": "purple", "rtlplus": "pink", "joyn": "yellow", "ard": "blue", "zdf": "orange",
@@ -229,7 +229,7 @@ enum TabReuse {
 
 // MARK: - Browser-Zoom passend zur Textgröße
 
-/// Stellt im externen Browser die Zoomstufe ein, die der Skalierung der App am nächsten liegt.
+/// Stellt im externen Browser die Zoomstufe ein, die der Skalierung der App am nächsten liegt, und schaltet das Fenster ins Vollbild.
 /// Löst dafür die Menüpunkte „Originalgröße“ (⌘0) und „Vergrößern“ (⌘+) per Bedienungshilfen aus –
 /// gefunden über das Tastenkürzel, nicht den Namen, also unabhängig von Sprache und Tastaturlayout.
 enum BrowserZoom {
@@ -258,13 +258,24 @@ enum BrowserZoom {
             guard let pid = waitFront(bundleID) else { return }
             Thread.sleep(forTimeInterval: 0.8)   // kurz, bis der Tab steht
             let ax = AXUIElementCreateApplication(pid)
-            guard let reset = menuItem(ax, chars: ["0"]), let zoomIn = menuItem(ax, chars: ["+", "="]) else { return }
-            AXUIElementPerformAction(reset, kAXPressAction as CFString)
-            for _ in 0..<n {
-                Thread.sleep(forTimeInterval: 0.08)
-                AXUIElementPerformAction(zoomIn, kAXPressAction as CFString)
+            if let reset = menuItem(ax, chars: ["0"]), let zoomIn = menuItem(ax, chars: ["+", "="]) {
+                AXUIElementPerformAction(reset, kAXPressAction as CFString)
+                for _ in 0..<n {
+                    Thread.sleep(forTimeInterval: 0.08)
+                    AXUIElementPerformAction(zoomIn, kAXPressAction as CFString)
+                }
+                if n > 0 { DispatchQueue.main.async { zoomedPID = pid } }
             }
-            if n > 0 { DispatchQueue.main.async { zoomedPID = pid } }
+            // Wie ein Fernseher: Browserfenster im Vollbild (macOS-Vollbild, nicht nur der Player).
+            // Menüpunkt mit ⌃⌘F ist ein Umschalter → nur auslösen, wenn das Fenster noch nicht im Vollbild ist.
+            let win: AXUIElement? = attr(ax, kAXFocusedWindowAttribute) ?? attr(ax, kAXMainWindowAttribute)
+            if let win, (attr(win, "AXFullScreen") as Bool?) != true {
+                if let full = menuItem(ax, chars: ["F", "f"], modifiers: 4) {   // 4 = ⌃ (⌘ ist immer dabei)
+                    AXUIElementPerformAction(full, kAXPressAction as CFString)
+                } else {
+                    AXUIElementSetAttributeValue(win, "AXFullScreen" as CFString, kCFBooleanTrue)
+                }
+            }
         }
     }
 
@@ -282,12 +293,13 @@ enum BrowserZoom {
         if let item = menuItem(ax, chars: ["0"]) { AXUIElementPerformAction(item, kAXPressAction as CFString) }
     }
 
-    /// Erster Menüpunkt mit ⌘ + Zeichen (Umschalt erlaubt, kein ⌥/⌃), bis Untermenü-Tiefe 3.
-    private static func menuItem(_ app: AXUIElement, chars: Set<String>) -> AXUIElement? {
+    /// Erster Menüpunkt mit ⌘ + Zeichen und den Zusatztasten `modifiers` (AX-Maske: 2 = ⌥, 4 = ⌃;
+    /// Umschalt ist immer erlaubt), bis Untermenü-Tiefe 3.
+    private static func menuItem(_ app: AXUIElement, chars: Set<String>, modifiers: Int = 0) -> AXUIElement? {
         guard let bar: AXUIElement = attr(app, kAXMenuBarAttribute) else { return nil }
         func search(_ el: AXUIElement, depth: Int) -> AXUIElement? {
             if let c: String = attr(el, kAXMenuItemCmdCharAttribute), chars.contains(c),
-               let m: Int = attr(el, kAXMenuItemCmdModifiersAttribute), m & ~1 == 0 { return el }
+               let m: Int = attr(el, kAXMenuItemCmdModifiersAttribute), m & ~1 == modifiers { return el }
             guard depth > 0, let kids: [AXUIElement] = attr(el, kAXChildrenAttribute) else { return nil }
             for k in kids { if let hit = search(k, depth: depth - 1) { return hit } }
             return nil

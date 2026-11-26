@@ -16,6 +16,7 @@ Der Name PopSofa, das PopSofa-Icon sowie Name und Logo von lowkii studios. Sie s
 
 ## Material Dritter
 
+- KI-Stimme in den Videos: erzeugt mit elevenlabs.io im kostenlosen Tarif, nicht von CC BY-NC 4.0 und dem Presse-Zusatz umfasst. Nur nicht-kommerziell und mit Nennung von elevenlabs.io im Titel
 - Schrift Atkinson Hyperlegible Next: SIL OFL 1.1
 - Lucide-Icons: Lizenz in `Web/app/vendor/LICENSE-lucide.txt`
 - TMDB-Logo und TMDB-Daten: Bedingungen von TMDB

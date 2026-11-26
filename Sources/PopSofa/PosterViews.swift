@@ -72,7 +72,7 @@ struct PosterCard: View {
         switch theme {
         case .apple: return series ? "#BF5AF2" : "#0A84FF"     // Systemfarben Lila / Blau
         case .pop: return series ? "#FF5DA2" : "#FFD23F"       // Comic-Pink / Comic-Gelb
-        case .afro: return series ? "#1E7A46" : "#F4B63F"      // Kente-Grün / Kente-Gold
+        case .woven: return series ? "#1E7A46" : "#F4B63F"      // Kente-Grün / Kente-Gold
         case .popLight: return series ? "#FF5DA2" : "#FFD23F"  // Comic-Pink / Comic-Gelb (Tinte darauf)
         case .clear, .clearLight: return series ? "#C5B3E6" : "#A9D1F5"     // ruhige Pastelltöne, schwarze Schrift
         }

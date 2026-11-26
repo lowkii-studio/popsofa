@@ -15,7 +15,7 @@ struct SplashView: View {
         ZStack {
             ThemedBackground().ignoresSafeArea()
 
-            // Druckwelle hinter dem Icon (Comic-Ring, im Afro-Stil gold, sonst Akzent/weiß)
+            // Druckwelle hinter dem Icon (Comic-Ring, im Webmuster-Stil gold, sonst Akzent/weiß)
             Circle()
                 .strokeBorder(theme.bold ? theme.p.accent : Ink.fg.opacity(0.6), lineWidth: 10 * Metrics.s)
                 .frame(width: 300 * Metrics.s, height: 300 * Metrics.s)

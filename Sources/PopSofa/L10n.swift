@@ -262,6 +262,7 @@ enum L10n {
         "Gilt für die ganze App, bis du sie ausschaltest": ["Aplica-se a toda a app até a desligares", "Applies to the whole app until you turn it off"],
         "Ausgewählt": ["Selecionado", "Selected"],
         "Klar dunkel": ["Claro escuro", "Clear dark"],
+        "Webmuster": ["Trama tecida", "Woven"],
         "Klar hell": ["Claro luminoso", "Clear light"],
         "Pop hell (Prismen)": ["Pop luminoso (prismas)", "Pop light (prisms)"],
         "Unauffällig – dein Farbsehen wirkt normal.": ["Sem alterações – a tua visão de cores parece normal.", "Unremarkable – your colour vision seems normal."],

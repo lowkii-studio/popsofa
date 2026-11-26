@@ -208,7 +208,7 @@ final class AppState: ObservableObject {
     @Published private(set) var detailInfo: TitleDetails?
     @Published var detailFocus = 0
     @Published var inputMode: InputMode = .controller
-    @Published var theme: Theme = Theme(rawValue: UserDefaults.standard.string(forKey: "theme") ?? "") ?? .apple {
+    @Published var theme: Theme = Theme.stored(UserDefaults.standard.string(forKey: "theme") ?? "") ?? .apple {
         didSet { applyDisplayFilter() }
     }
     /// Farbsehschwäche (passt die Farben an) – gespeichert; Simulation nur bis zum Ausschalten.
@@ -321,7 +321,7 @@ final class AppState: ObservableObject {
         if let p = profiles.first(where: { $0.id == active }) {
             taste = p.taste; watchlist = p.watchlist
             if let sv = p.services { enabledIDs = Set(sv) }   // jedes Profil hat seine eigenen Dienste
-            if let t = p.theme.flatMap(Theme.init(rawValue:)) { theme = t }
+            if let t = p.theme.flatMap(Theme.stored) { theme = t }
             if let v = p.colorVision.flatMap(ColorVision.init(rawValue:)) { colorVision = v }
             if let s = p.colorVisionSeverity { colorVisionSeverity = s }
             if let c = p.clearContrast.flatMap(ClearContrast.init(rawValue:)) { clearContrast = c }
@@ -456,7 +456,7 @@ final class AppState: ObservableObject {
         if let sv = p.services { enabledIDs = Set(sv) }   // ohne eigene Auswahl: die bisherigen übernehmen
         // Stil und Barrierefreiheit der Person – erst nach Geschmack/Merkliste, weil jede Änderung speichert.
         simulateVision = false
-        if let t = p.theme.flatMap(Theme.init(rawValue:)) { theme = t }
+        if let t = p.theme.flatMap(Theme.stored) { theme = t }
         if let v = p.colorVision.flatMap(ColorVision.init(rawValue:)) { colorVision = v }
         if let s = p.colorVisionSeverity { colorVisionSeverity = s }
         if let c = p.clearContrast.flatMap(ClearContrast.init(rawValue:)) { clearContrast = c }

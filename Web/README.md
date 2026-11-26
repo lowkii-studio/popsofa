@@ -12,7 +12,7 @@ plus eine **Chrome-Erweiterung**, damit der Xbox-Controller auch in Netflix & Co
 
 - Profile („Wer schaut?“) mit eigener Sprache (Deutsch, Português, English – Oberfläche **und** Beschreibungen),
   Heimatland und Diensten
-- Toolbar mit Menüs für Stil (Apple, Pop-Art, Afro, Klar dunkel/hell, Pop hell), Textgröße und Sprache – Stil und
+- Toolbar mit Menüs für Stil (Apple, Pop-Art, Webmuster, Klar dunkel/hell, Pop hell), Textgröße und Sprache – Stil und
   Sprache schon vor der Profilwahl. Textgrößen rasten auf die Browser-Zoomstufen der Mac-App ein (Groß = 150 %);
   die Chrome-Erweiterung zoomt Netflix & Co. im selben Tab genauso
 - Auf jeder Unterseite: „‹ Zurück“ und der Pfad (z. B. PopSofa › Einstellungen › Genres)

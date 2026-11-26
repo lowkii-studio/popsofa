@@ -852,6 +852,10 @@ const L10N = {
 "Claro escuro",
 "Clear dark"
 ],
+"Webmuster": [
+"Trama tecida",
+"Woven"
+],
 "Klar hell": [
 "Claro luminoso",
 "Clear light"

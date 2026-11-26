@@ -1,12 +1,14 @@
 import SwiftUI
 import AppKit
 
-/// Gestaltung: ruhiges Apple-TV-Glas, knalliges Pop-Art (Comic, Rasterpunkte) oder Afro (Kente-Farben, Webmuster).
+/// Gestaltung: ruhiges Apple-TV-Glas, knalliges Pop-Art (Comic, Rasterpunkte) oder Webmuster (gewebte Bänder und Erdtöne, angelehnt an Kente).
 enum Theme: String, CaseIterable {
-    case apple, pop, afro, clear, clearLight, popLight
+    case apple, pop, woven, clear, clearLight, popLight
+    /// Gespeicherter Stil; „afro“ hieß der Stil „Webmuster“ bis Version 1.0.
+    static func stored(_ s: String) -> Theme? { Theme(rawValue: s == "afro" ? "woven" : s) }
     var title: String {
         switch self {
-        case .apple: return "Apple"; case .pop: return "Pop-Art"; case .afro: return "Afro"
+        case .apple: return "Apple"; case .pop: return "Pop-Art"; case .woven: return tr("Webmuster")
         case .clear: return tr("Klar dunkel"); case .clearLight: return tr("Klar hell"); case .popLight: return tr("Pop hell (Prismen)")
         }
     }
@@ -23,10 +25,10 @@ enum Theme: String, CaseIterable {
         default: return "#0A0A0F"
         }
     }
-    /// Pop, Afro und Pop hell teilen den grafischen Stil: flache Flächen, Kontur, harte Schatten.
+    /// Pop, Webmuster und Pop hell teilen den grafischen Stil: flache Flächen, Kontur, harte Schatten.
     /// „Klar“ baut auf dem ruhigen Apple-Stil auf (siehe Access.swift).
-    var bold: Bool { self == .pop || self == .afro || self == .popLight }
-    var p: Pop { self == .afro ? .afro : self == .popLight ? .popLight : .pop }
+    var bold: Bool { self == .pop || self == .woven || self == .popLight }
+    var p: Pop { self == .woven ? .woven : self == .popLight ? .popLight : .pop }
     /// Akzentfarbe als Schrift: auf hellem Grund wäre Gelb unlesbar – dort Tinte.
     var accentText: Color { self == .popLight ? Color(hex: Pop.inkHexLight) : p.accent }
     var next: Theme { let a = Self.allCases; return a[(a.firstIndex(of: self)! + 1) % a.count] }
@@ -75,8 +77,8 @@ struct Pop {
     static let inkHexLight = "#2B2622"
     var inkHex: String { Self.inkHexLight }
 
-    /// Afro: Kakao-Braun, Kente-Gold, Rot, Grün, Terrakotta, Ocker, Indigo; Schlamm-Tuch-Creme als Papier.
-    static let afro = Pop(bgHex: "#3B1F14", accentHex: "#F4B63F",
+    /// Webmuster: Kakao-Braun, Kente-Gold, Rot, Grün, Terrakotta, Ocker, Indigo; Schlamm-Tuch-Creme als Papier.
+    static let woven = Pop(bgHex: "#3B1F14", accentHex: "#F4B63F",
                           paper: Color(hex: "#F2E2C4"), card: Color(hex: "#D9822B"), dots: Color(hex: "#C8552B"),
                           font: "Rockwell-Bold", fontScale: 1.0,
                           tiles: ["#F4B63F", "#C1272D", "#1E7A46", "#D9822B", "#7A2E5D", "#E3A13B", "#2A8C82"],
@@ -173,14 +175,14 @@ struct Kente: View {
     }
 }
 
-/// Flächenmuster des Stils: Rasterpunkte (Pop) oder Webmuster (Afro). `fine` = kleiner, für Kacheln.
+/// Flächenmuster des Stils: Rasterpunkte (Pop) oder gewebte Bänder (Webmuster). `fine` = kleiner, für Kacheln.
 struct ThemePattern: View {
     @Environment(\.theme) private var theme
     var color: Color
     var fine = false
 
     var body: some View {
-        if theme == .afro {
+        if theme == .woven {
             Kente(color: color, unit: fine ? 9 : 14)
         } else {
             Halftone(color: color, spacing: fine ? 12 : 18, maxRadius: fine ? 2.6 : 4)
@@ -233,7 +235,7 @@ enum Contrast {
         precondition(ratio("#FFFFFF", "#2E7D32") >= 4.5, "Weiß auf Genre-Grün lesbar")
         precondition(Pop.textOn("#FFD23F") == .black, "auf Gelb schwarze Schrift")
         precondition(Pop.textOn("#2F6FDB") == .white, "auf Blau weiße Schrift")
-        for p in [Pop.pop, Pop.afro] {
+        for p in [Pop.pop, Pop.woven] {
             for (id, t) in Catalog.tones { precondition(p.tones[t] != nil, "Farbrichtung \(t) für \(id) fehlt") }
             precondition(p.tone(for: Catalog.all.first { $0.id == "youtube" }!) == p.tones["red"], "YouTube → Rot")
             let custom = Service(id: "x", name: "x", url: "", colorTop: "#1DB954", colorBottom: "#000000", symbol: "")
@@ -242,7 +244,8 @@ enum Contrast {
             precondition(ratio(p.accentHex, p.bgHex) >= 4.5, "Akzent-Überschrift auf \(p.bgHex) lesbar")
             precondition(ratio("#000000", p.accentHex) >= 4.5, "Schwarz auf Akzent-Knopf lesbar")
         }
-        precondition(Pop.textOn("#F4B63F") == .black && Pop.textOn("#7A2E5D") == .white, "Afro-Kacheln")
+        precondition(Theme.stored("afro") == .woven && Theme.stored("pop") == .pop && Theme.stored("?") == nil, "alte Stil-Namen")
+        precondition(Pop.textOn("#F4B63F") == .black && Pop.textOn("#7A2E5D") == .white, "Webmuster-Kacheln")
         precondition(Theme.popLight.next == .apple && Theme.apple.next == .pop, "Stil-Reihenfolge")
         // Pop hell: Text liegt nur auf Creme, Papier-Etiketten oder Gelb – Tinte überall ≥ 7:1 (AAA)
         for t in [Pop.popLight.bgHex, "#FFF7E8", Pop.popLight.accentHex] {

@@ -259,7 +259,7 @@ function icon(name) {
 const ICON = { lang: icon('globe'), theme: icon('palette'), size: '<b aria-hidden="true">Aa</b>', settings: icon('settings') };
 const cap = s => s ? s[0].toLocaleUpperCase() + s.slice(1) : s;
 const langName = (code, inLang) => cap(new Intl.DisplayNames([inLang], { type: 'language' }).of(code));
-const THEMES = [['apple', 'Apple'], ['pop', 'Pop-Art'], ['afro', 'Afro'], ['clear', 'Klar dunkel'], ['clearLight', 'Klar hell'], ['popLight', 'Pop hell (Prismen)']];
+const THEMES = [['apple', 'Apple'], ['pop', 'Pop-Art'], ['woven', 'Webmuster'], ['clear', 'Klar dunkel'], ['clearLight', 'Klar hell'], ['popLight', 'Pop hell (Prismen)']];
 // Kurzbeschreibung der Lesbarkeits-Stile in der Auswahlliste (wie in der Mac-App).
 const THEME_DETAIL = { clear: 'Dunkel, ruhig, gedämpftes Weiß', clearLight: 'Hell und warm, abends gedimmt', popLight: 'Pop-Art hell, ruhig hinter Text' };
 const SIZES = [['auto', 'Auto'], ['small', 'Klein'], ['normal', 'Mittel'], ['large', 'Groß'], ['xlarge', 'Sehr groß']];
@@ -274,7 +274,7 @@ function zoom(p = me()) {
   return s >= 1.03 && near < 1.1 ? 1.1 : near;   // leicht vergrößert → mindestens eine Stufe
 }
 const pct = z => Math.round(z * 100) + ' %';
-const themeOf = () => (noProfile() ? S.theme : me().theme) || S.theme || 'pop';
+const themeOf = () => { const v = (noProfile() ? S.theme : me().theme) || S.theme || 'pop'; return v === 'afro' ? 'woven' : v; };   // 'afro': Name bis Version 1.0
 const menuValue = kind => ({ lang: ui(), theme: themeOf(), size: me()?.size || 'auto' })[kind];
 
 function menuOptions(kind) {

@@ -1,5 +1,5 @@
 /// Die Fernbedienungs-Webseite fürs iPhone (eine Datei, Vanilla-JS, keine externen Quellen).
-/// Übernimmt den Stil der Mac-App (Apple, Pop-Art, Afro) aus der `state`-Nachricht.
+/// Übernimmt den Stil der Mac-App (Apple, Pop-Art, Webmuster) aus der `state`-Nachricht.
 enum RemotePage {
     static let html = #"""
 <!doctype html>
@@ -20,7 +20,7 @@ body[data-theme=pop]{--bg:#0E5E66;--pattern:radial-gradient(rgba(54,197,201,.38)
  --card:#FFF8E7;--card2:#FFD23F;--btnfg:#000;--line:#000;--border:3px solid #000;--shadow:4px 4px 0 #000;--press:translate(3px,3px);
  --accent:#FFD23F;--accentfg:#000;--head:'Futura-CondensedExtraBold','Futura','Avenir Next Condensed',sans-serif;--headcol:#FFD23F;
  --pad:rgba(0,0,0,.32);--padfg:rgba(255,255,255,.85);--input:#FFF8E7;--inputfg:#000;--nav:rgba(0,0,0,.55);--navact:#FFD23F;--dim:rgba(255,255,255,.92);--r:14px}
-body[data-theme=afro]{--bg:#3B1F14;
+body[data-theme=woven]{--bg:#3B1F14;
  --pattern:linear-gradient(135deg,rgba(200,85,43,.3) 25%,transparent 25%) -11px 0/22px 22px,linear-gradient(225deg,rgba(200,85,43,.3) 25%,transparent 25%) -11px 0/22px 22px,repeating-linear-gradient(0deg,transparent 0 66px,rgba(244,182,63,.28) 66px 70px);
  --card:#F2E2C4;--card2:#F4B63F;--btnfg:#000;--line:#000;--border:3px solid #000;--shadow:4px 4px 0 #000;--press:translate(3px,3px);
  --accent:#F4B63F;--accentfg:#000;--head:'Rockwell-Bold','Rockwell','American Typewriter',Georgia,serif;--headcol:#F4B63F;
@@ -158,7 +158,7 @@ body[data-theme=apple] #pin{border:1px solid rgba(255,255,255,.12)}
 'use strict';
 var $=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)};
 var KEY='popsofaToken',ws=null,authed=false,backoff=500,timer=null,state={services:[],mouse:false};
-var BG={apple:'#0A0A0F',pop:'#0E5E66',afro:'#3B1F14'};
+var BG={apple:'#0A0A0F',pop:'#0E5E66',woven:'#3B1F14'};
 var urlPin=new URLSearchParams(location.search).get('pin');
 var store={get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},
  set:function(k,v){try{v?localStorage.setItem(k,v):localStorage.removeItem(k)}catch(e){}}};
