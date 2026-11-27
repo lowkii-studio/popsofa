@@ -21,7 +21,7 @@ Für alle, die einen Mac mini oder ein MacBook am Fernseher haben und abends nic
 
 ## Was PopSofa besonders macht
 
-PopSofa ist ein Experiment von lowkii studios: ein Launcher, der sich an die Person anpasst, die davor sitzt – nicht umgekehrt. Er ist keine Diagnose und kein Medizinprodukt, die Tests helfen nur bei der Einstellung der Darstellung.
+PopSofa ist ein Experiment von lowkii studio: ein Launcher, der sich an die Person anpasst, die davor sitzt – nicht umgekehrt. Er ist keine Diagnose und kein Medizinprodukt, die Tests helfen nur bei der Einstellung der Darstellung.
 
 - **Anpassung an Sehvermögen und Sitzabstand:** Eine Kamera misst einmalig etwa 3 Sekunden lang den Abstand zum Gesicht (es werden keine Bilder gespeichert). Aus Abstand, Bildschirmgröße und einem kurzen Sehtest im Profil berechnet der Modus „Auto“ die Textgröße stufenlos. Die Messung arbeitet mit festen Näherungswerten und ist ungefähr, nicht kalibriert. Alternativ gibt es feste Stufen von Klein bis Sehr groß.
 - **Kurze Tests für die Darstellung:**
@@ -35,7 +35,7 @@ PopSofa ist ein Experiment von lowkii studios: ein Launcher, der sich an die Per
 
 ### Wie PopSofa entstanden ist
 
-Konzept und Ideen stammen größtenteils von lowkii studios, ebenso Use Cases, UX-Entwurf und die Qualitätssicherung an der App. Daraus kamen zum Beispiel:
+Konzept und Ideen stammen größtenteils von lowkii studio, ebenso Use Cases, UX-Entwurf und die Qualitätssicherung an der App. Daraus kamen zum Beispiel:
 
 - **Xbox-Controller am Mac** und das Zusammenspiel verschiedener Eingabegeräte: Controller, iPhone, Maus, Tastatur und Sprache.
 - **Abstand und Schrift:** Die Kamera misst auf Wunsch einmalig den Sitzabstand, die Schriftgröße richtet sich danach.
@@ -160,6 +160,6 @@ Sicherheit: Nur Geräte aus dem lokalen Netz werden angenommen, Befehle erst nac
 - **Lizenz:** [PolyForm Noncommercial 1.0.0](LICENSE). Du darfst PopSofa für nicht-kommerzielle Zwecke kostenlos nutzen, ändern und weitergeben. Kommerzielle Nutzung nur nach Absprache. Der Code ist offen, gilt aber nach der Definition der Open Source Initiative nicht als „Open Source“. Frühere Stände bis Commit `c9634a0` wurden unter MIT veröffentlicht. Die Schrift Atkinson Hyperlegible Next steht unter der SIL OFL 1.1, die Lizenz liegt in `Resources/Fonts`.
 - **TMDB:** This application uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB. Die kostenlose TMDB-API darf nur nicht-kommerziell genutzt werden ([API-Bedingungen](https://www.themoviedb.org/api-terms-of-use)). Jede Person trägt ihren eigenen API-Schlüssel ein. PopSofa speichert keine TMDB-Inhalte dauerhaft.
 - **Marken:** Netflix, Prime Video, Disney+, YouTube und weitere genannte Dienste sind Marken ihrer jeweiligen Inhaber. PopSofa steht in keiner Verbindung zu ihnen und verwendet ihre Logos nicht.
-- **Keine Gewähr:** PopSofa ist ein Hobby- und Experimentierprojekt von lowkii studios und wird ohne Gewähr bereitgestellt.
+- **Keine Gewähr:** PopSofa ist ein Hobby- und Experimentierprojekt von lowkii studio und wird ohne Gewähr bereitgestellt.
 - **Medien, Name und Logos:** Texte, Screenshots und Videos stehen unter CC BY-NC 4.0. Name, Icon und Logo sind nicht lizenziert. Details in [LICENSE-MEDIA.md](LICENSE-MEDIA.md).
 - **Impressum:** siehe [IMPRESSUM.md](IMPRESSUM.md).

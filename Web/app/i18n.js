@@ -404,9 +404,9 @@ const L10N = {
 "Sobre o PopSofa",
 "About PopSofa"
 ],
-"Ein Projekt von lowkii studios. Frei für nicht-kommerzielle Nutzung.": [
-"Um projeto da lowkii studios. Livre para uso não comercial.",
-"A project by lowkii studios. Free for noncommercial use."
+"Ein Projekt von lowkii studio. Frei für nicht-kommerzielle Nutzung.": [
+"Um projeto do lowkii studio. Livre para uso não comercial.",
+"A project by lowkii studio. Free for noncommercial use."
 ],
 "1. Kostenloses Konto auf themoviedb.org anlegen\n2. Einstellungen › API › Schlüssel anfordern (privat)\n3. „API Read Access Token“ oder „API Key“ kopieren und hier einfügen (⌘V oder iPhone)": [
 "1. Cria uma conta gratuita em themoviedb.org\n2. Definições › API › pede uma chave (uso pessoal)\n3. Copia o «API Read Access Token» ou a «API Key» e cola aqui (⌘V ou iPhone)",
