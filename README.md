@@ -43,7 +43,7 @@ Konzept und Ideen stammen größtenteils von lowkii studios, ebenso Use Cases, U
 - **Einstellung für Prismenbrillen:** ein kurzer Check und ein heller Stil, der farbige Säume an Kanten weniger auffallen lassen soll.
 - **Farbsehtest mit Punktfeldern**, der die Farben der Oberfläche einstellt. Die Methode folgt dem Cambridge Colour Test.
 
-PopSofa zeigt auch, was mit KI möglich ist. Sie war das Werkzeug bei der Umsetzung. Welches Problem gelöst wird, wie sich die Lösung anfühlt und ob sie gut genug ist, haben Menschen entschieden.
+PopSofa zeigt auch, was mit KI möglich ist. Sie war das Werkzeug bei der Umsetzung. Welches Problem gelöst wird, wie sich die Lösung anfühlt und ob sie gut genug ist, habe ich entschieden.
 
 **Grenzen:** Die App läuft auf dem Mac (eine Web-Version mit weniger Funktionen liegt in `Web/`), und für Empfehlungen braucht jede Person einen eigenen TMDB-Schlüssel (siehe unten). Das Release ist nicht von Apple notarisiert, deshalb braucht der erste Start einen Extra-Schritt.
 
